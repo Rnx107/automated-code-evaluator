@@ -4,13 +4,13 @@ from backend.core.runtime import LanguageRuntime
 from pydantic import BaseModel, Field
 
 
-class CreateAssignment(BaseModel):
+class AssignmentCreate(BaseModel):
     title: str = Field(min_length=10)
     language: LanguageRuntime
     due_date: datetime
 
 
-class ShowAssignment(BaseModel):
+class AssignmentResponse(BaseModel):
     id: int = Field(gt=0)
     created_by: int = Field(gt=0)
     title: str
@@ -18,7 +18,7 @@ class ShowAssignment(BaseModel):
     due_date: datetime
 
 
-class UpdateAssignment(BaseModel):
+class AssignmentUpdate(BaseModel):
     title: str | None = None
     language: LanguageRuntime | None = None
     due_date: datetime | None = None

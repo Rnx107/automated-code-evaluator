@@ -3,13 +3,13 @@ from datetime import datetime
 from pydantic import BaseModel, Field
 
 
-class CreateSubmission(BaseModel):
+class SubmissionCreate(BaseModel):
     assignment_id: int = Field(gt=0)
     student_id: int = Field(gt=0)
     code: str
 
 
-class ShowSubmission(BaseModel):
+class SubmissionResponse(BaseModel):
     id: int = Field(gt=0)
     assignment_id: int = Field(gt=0)
     student_id: int = Field(gt=0)
@@ -18,5 +18,5 @@ class ShowSubmission(BaseModel):
     status: str
 
 
-class UpdateSubmissionStatus(BaseModel):
+class SubmissionUpdate(BaseModel):
     status: str = Field(min_length=1)

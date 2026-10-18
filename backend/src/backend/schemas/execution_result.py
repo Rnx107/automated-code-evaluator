@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 
 
-class CreateExecutionResult(BaseModel):
+class ExecutionResultCreate(BaseModel):
     submission_id: int = Field(gt=0)
     test_case_id: int = Field(gt=0)
     actual_output: str
@@ -10,7 +10,7 @@ class CreateExecutionResult(BaseModel):
     memory_kb: int = Field(ge=0)
 
 
-class ShowExecutionResult(BaseModel):
+class ExecutionResultResponse(BaseModel):
     id: int = Field(gt=0)
     submission_id: int = Field(gt=0)
     test_case_id: int = Field(gt=0)
@@ -20,7 +20,7 @@ class ShowExecutionResult(BaseModel):
     memory_kb: int = Field(ge=0)
 
 
-class UpdateExecutionResult(BaseModel):
+class ExecutionResultUpdate(BaseModel):
     actual_output: str | None = None
     passed: bool | None = None
     runtime_ms: int | None = Field(default=None, ge=0)

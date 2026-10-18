@@ -34,7 +34,7 @@ class UserResponse(BaseModel):
     role: UserRole
 
 
-class AdminUserUpdate(BaseModel):
+class UserUpdate(BaseModel):
     name: str | None = None
     email: str | None = None
     role: UserRole | None = None
