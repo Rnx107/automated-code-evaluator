@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class SubmissionCreate(BaseModel):
@@ -10,6 +10,8 @@ class SubmissionCreate(BaseModel):
 
 
 class SubmissionResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int = Field(gt=0)
     assignment_id: int = Field(gt=0)
     student_id: int = Field(gt=0)

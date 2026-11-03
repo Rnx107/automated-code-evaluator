@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class TestCaseCreate(BaseModel):
@@ -9,6 +9,8 @@ class TestCaseCreate(BaseModel):
 
 
 class TestCaseResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int = Field(gt=0)
     assignment_id: int = Field(gt=0)
     input: str

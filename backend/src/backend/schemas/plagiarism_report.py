@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class PlagiarismReportCreate(BaseModel):
@@ -9,6 +9,8 @@ class PlagiarismReportCreate(BaseModel):
 
 
 class PlagiarismReportResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int = Field(gt=0)
     submission_a_id: int = Field(gt=0)
     submission_b_id: int = Field(gt=0)

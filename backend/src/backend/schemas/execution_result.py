@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class ExecutionResultCreate(BaseModel):
@@ -11,6 +11,8 @@ class ExecutionResultCreate(BaseModel):
 
 
 class ExecutionResultResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int = Field(gt=0)
     submission_id: int = Field(gt=0)
     test_case_id: int = Field(gt=0)

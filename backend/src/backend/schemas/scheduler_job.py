@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class SchedulerJobCreate(BaseModel):
@@ -10,6 +10,8 @@ class SchedulerJobCreate(BaseModel):
 
 
 class SchedulerJobResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int = Field(gt=0)
     submission_id: int = Field(gt=0)
     priority: int = Field(ge=0)
